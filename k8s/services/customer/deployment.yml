@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer
+  labels:
+    app: customer
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: customer
+      labels:
+        app: customer
+    spec:
+      containers:
+        - name: customer
+          image: starterregistry.azurecr.io/starter/customer:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_DB_USER
+              value: postgres@my-postgres-db
+            - name: POSTGRES_DB_HOST
+              value: my-postgres-db.postgres.database.azure.com
+            - name: POSTGRES_DB_NAME
+              value: customer
+            - name: POSTGRES_DB_PASS
+              value: 123qwe@W
+            - name: FRAUD_ENDPOINT
+              value: "http://fraud/api/v1/fraud-check"
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: customer

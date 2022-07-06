@@ -1,0 +1,13 @@
+server:
+  port: ${PORT}
+
+spring:
+  application:
+    name: fraud
+  cloud:
+    azure:
+      cosmos:
+        endpoint: ${COSMOS_ENDPOINT}
+        key: ${COSMOS_KEY}
+        database: ${COSMOS_DATABASE}
+        populate-query-metrics: true

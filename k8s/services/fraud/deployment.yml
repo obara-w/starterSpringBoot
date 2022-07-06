@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraud
+  labels:
+    app: fraud
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: fraud
+      labels:
+        app: fraud
+    spec:
+      containers:
+        - name: fraud
+          image: starterregistry.azurecr.io/starter/fraud:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: COSMOS_ENDPOINT
+              value: "https://cosmo-core.documents.azure.com:443/"
+            - name: COSMOS_KEY
+              value: "8Dx3Zihm4mQe4A5ooaklvG1o44GW8xlqpGyx3oAwfksHSaztSG1jaW0VOivv1bczufQ2zVxCpK5QFEOuH672Gg=="
+            - name: COSMOS_DATABASE
+              value: myDatabase
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: fraud

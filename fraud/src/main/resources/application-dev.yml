@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: fraud
+  cloud:
+    azure:
+      cosmos:
+        endpoint: 'https://cosmo-core.documents.azure.com:443/'
+        key: '8Dx3Zihm4mQe4A5ooaklvG1o44GW8xlqpGyx3oAwfksHSaztSG1jaW0VOivv1bczufQ2zVxCpK5QFEOuH672Gg=='
+        database: 'myDatabase'
+        populate-query-metrics: true
