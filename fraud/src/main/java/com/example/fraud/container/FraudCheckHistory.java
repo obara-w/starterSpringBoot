@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Data
 @Builder
@@ -21,5 +21,5 @@ public class FraudCheckHistory {
     private String id;
     private Integer customerId;
     private Boolean isFraudster;
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
 }
